@@ -1,11 +1,21 @@
-.Title {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  padding: 1em;
-  margin-bottom: 2em;
-  background-color: rgb(192, 45, 26);
+.header-ghost-wrapper {
+  background-color: black;
+}
+
+.HeadLine {
+  color: #f50057;
+  font-size: 33px;
+  font-weight: bold;
+}
+
+.ButtonList {
+  color: #f50057;
+  background-color: black;
+  font-weight: bold;
+}
+
+.Button {
   color: #fff;
+  background-color: #f50057;
+  font-weight: bold;
 }

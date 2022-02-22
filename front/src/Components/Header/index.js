@@ -1,17 +1,28 @@
 import React from "react";
-import {} from "react-router-dom";
+import { PageHeader, Button } from "antd";
 import "./Header.css";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const Header = () => {
+  const Titre = <div className="HeadLine">My Troopers</div>;
+
   return (
-    <div className="Title">
-      <span style={{ marginLeft: "20px" }}>
-        <h1>MyTrooperS</h1>
-        <h1>List</h1>
-        <h1>Search</h1>
-      </span>
-    </div>
+    <Router>
+      <div className="header-ghost-wrapper">
+        <PageHeader
+          ghost={true}
+          title={Titre}
+          extra={[
+            <Button className="Button" key="2">
+              <a href="/list">List</a>
+            </Button>,
+            <Button className="Button" key="3">
+              <a href="/search">Search</a>
+            </Button>,
+          ]}
+        />
+      </div>
+    </Router>
   );
 };
-
 export default Header;
