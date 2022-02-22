@@ -1,13 +1,15 @@
 import React from "react";
+import {} from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
   return (
     <div className="Title">
-      <h1>SFPOPOS</h1>
-      <div className="Title-Subtitle">
-        San Franciscos Privately Owned Public Spaces
-      </div>
+      <span style={{ marginLeft: "20px" }}>
+        <h1>MyTrooperS</h1>
+        <h1>List</h1>
+        <h1>Search</h1>
+      </span>
     </div>
   );
 };
