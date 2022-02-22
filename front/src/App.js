@@ -9,10 +9,13 @@ const App = () => {
     <Router>
       <Switch>
         <Header />
-        <Route path="/list" component={List} />
-        <Route path="/search" component={Search} />
+        <Route path="/list" exact>
+          <List />
+        </Route>
+        <Route path="/search" exact>
+          <Search />
+        </Route>
       </Switch>
-      <List />
     </Router>
   );
 };
