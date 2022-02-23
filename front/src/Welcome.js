@@ -1,6 +1,13 @@
-// import { Button, Card } from "@blueprintjs/core";
 import React, { useCallback, useContext, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Navbar from "./Components/Navbar/index";
+import List from "./Pages/List/index";
+import Search from "./Pages/Search/index";
 import { UserContext } from "./Context/UserContext";
+import "./Welcome.css";
+import { Layout } from "antd";
+const { Header, Content } = Layout;
 
 const Welcome = () => {
   const [userContext, setUserContext] = useContext(UserContext);
@@ -70,29 +77,66 @@ const Welcome = () => {
   ) : !userContext.details ? (
     <p>Chargement...</p>
   ) : (
-    <div>
-      <div className="user-details">
-        <div>
-          <p>
-            Welcome&nbsp;
-            <strong>
-              {userContext.details.firstName}
-              {userContext.details.lastName &&
-                " " + userContext.details.lastName}
-            </strong>
-            !
-          </p>
-        </div>
-        <div>
-          <button onClick={refetchHandler} style={{ marginLeft: 20 }}>
-            Refetch
-          </button>
-          <button onClick={logoutHandler} style={{ marginLeft: 20 }}>
-            Logout
-          </button>
-        </div>
-      </div>
-    </div>
+    <Router>
+      <Layout>
+        <Header className="head">
+          <Navbar />
+          <div className="search">MyTrooperS</div>
+          <div>
+            <p>
+              Welcome&nbsp;
+              <strong>
+                {userContext.details.firstName}
+                {userContext.details.lastName &&
+                  " " + userContext.details.lastName}
+              </strong>
+              !
+            </p>
+          </div>
+          <div>
+            <button onClick={refetchHandler} style={{ marginLeft: 20 }}>
+              Refetch
+            </button>
+            <button onClick={logoutHandler} style={{ marginLeft: 20 }}>
+              Logout
+            </button>
+          </div>
+        </Header>
+        <Content className="content">
+          <Switch>
+            <Route path="/list" exact>
+              <List />
+            </Route>
+            <Route path="/search" exact>
+              <Search />
+            </Route>
+          </Switch>
+        </Content>
+      </Layout>
+    </Router>
+    // <div>
+    //   <div className="user-details">
+    //     <div>
+    //       <p>
+    //         Welcome&nbsp;
+    //         <strong>
+    //           {userContext.details.firstName}
+    //           {userContext.details.lastName &&
+    //             " " + userContext.details.lastName}
+    //         </strong>
+    //         !
+    //       </p>
+    //     </div>
+    //     <div>
+    //       <button onClick={refetchHandler} style={{ marginLeft: 20 }}>
+    //         Refetch
+    //       </button>
+    //       <button onClick={logoutHandler} style={{ marginLeft: 20 }}>
+    //         Logout
+    //       </button>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 

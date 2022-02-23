@@ -1,0 +1,25 @@
+.head {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  color: black;
+  background-color: orange;
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  height: 1px;
+}
+
+.search {
+  margin-left: 750px;
+}
+
+.content {
+  background-color: #ffb6c1;
+  margin-top: 100px;
+}
