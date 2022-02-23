@@ -2,9 +2,7 @@ import React from "react";
 import "./List.css";
 
 const List = () => {
-  return (
-    <div style={{ fontSize: "50px", backgroundColor: "red" }}>Ma liste</div>
-  );
+  return <div>Ma Liste</div>;
 };
 
 export default List;
