@@ -1,6 +1,7 @@
 .head {
   position: fixed;
   width: 100%;
+  height: 100;
   left: 0;
   top: 0;
   right: 0;
@@ -15,11 +16,11 @@
   height: 1px;
 }
 
-.search {
-  margin-left: 750px;
+.title {
+  margin-left: 500px;
+  font-size: 30px;
 }
 
 .content {
-  background-color: #ffb6c1;
-  margin-top: 100px;
+  margin-top: 63px;
 }

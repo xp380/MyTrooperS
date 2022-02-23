@@ -1,9 +1,11 @@
 import React, { useCallback, useContext, useEffect } from "react";
 import List from "../../Pages/List/index";
 import Search from "../../Pages/Search/index";
+import Todo from "../../Pages/Todo/index";
 import { UserContext } from "../../Context/UserContext";
 import "./HomePage.css";
 import { Layout, Tabs } from "antd";
+import { LogoutOutlined } from "@ant-design/icons";
 
 const { TabPane } = Tabs;
 const { Header, Content } = Layout;
@@ -78,30 +80,30 @@ const Welcome = () => {
   ) : (
     <Layout>
       <Header className="head">
-        <div className="search">MyTrooperS</div>
         <div>
-          <p>
-            Welcome&nbsp;
-            <strong>
-              {userContext.details.firstName}
-              {userContext.details.lastName &&
-                " " + userContext.details.lastName}
-            </strong>
-            !
-          </p>
+          Welcome&nbsp;
+          <strong>
+            {userContext.details.firstName}
+            {userContext.details.lastName && " " + userContext.details.lastName}
+          </strong>
+          !
         </div>
-        <div>
-          <button
-            onClick={refetchHandler}
-            style={{ marginLeft: 20, height: 40, marginTop: 40 }}
-          >
-            Refetch
-          </button>
+        <h3 className="title">
+          MyTrooperS
+          <br />
+        </h3>
+        <div style={{ paddingBottom: "20px" }}>
           <button
             onClick={logoutHandler}
-            style={{ marginLeft: 20, height: 40, marginTop: 40 }}
+            style={{
+              marginLeft: 600,
+              marginTop: 20,
+              height: 60,
+              width: 60,
+              borderRadius: 12,
+            }}
           >
-            Logout
+            <LogoutOutlined />
           </button>
         </div>
       </Header>
@@ -112,6 +114,9 @@ const Welcome = () => {
           </TabPane>
           <TabPane tab="Search" key="2">
             <Search />
+          </TabPane>
+          <TabPane tab="Todo" key="3">
+            <Todo />
           </TabPane>
         </Tabs>
       </Content>
