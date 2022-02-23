@@ -1,22 +1,9 @@
-// import React from "react";
-// import HomePage from "./Components/HomePage/index";
-
-// const App = () => {
-//   return (
-//     <div>
-//       <HomePage />
-//     </div>
-//   );
-// };
-
-// export default App;
-
 import { Tabs } from "antd";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { UserContext } from "./Context/UserContext";
 import Login from "./Login";
 import Register from "./Register";
-import Welcome from "./Welcome";
+import HomePage from "./Components/HomePage/index";
 
 function App() {
   const { TabPane } = Tabs;
@@ -49,23 +36,6 @@ function App() {
     verifyUser();
   }, [verifyUser]);
 
-  /**
-   * Sync logout across tabs
-   */
-  const syncLogout = useCallback((event) => {
-    if (event.key === "logout") {
-      // If using react-router-dom, you may call history.push("/")
-      window.location.reload();
-    }
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("storage", syncLogout);
-    return () => {
-      window.removeEventListener("storage", syncLogout);
-    };
-  }, [syncLogout]);
-
   return userContext.token === null ? (
     <div>
       <Tabs id="Tabs" onChange={setCurrentTab} selectedTabId={currentTab}>
@@ -78,7 +48,7 @@ function App() {
       </Tabs>
     </div>
   ) : userContext.token ? (
-    <Welcome />
+    <HomePage />
   ) : (
     <p>Chargement ...</p>
   );
