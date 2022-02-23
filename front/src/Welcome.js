@@ -82,18 +82,14 @@ const Welcome = () => {
             </strong>
             !
           </p>
-          <p>
-            Your reward points: <strong>{userContext.details.points}</strong>
-          </p>
         </div>
-        <div className="user-actions">
-          <button text="Refetch" intent="primary" onClick={refetchHandler} />
-          <button
-            text="Logout"
-            onClick={logoutHandler}
-            minimal
-            intent="primary"
-          />
+        <div>
+          <button onClick={refetchHandler} style={{ marginLeft: 20 }}>
+            Refetch
+          </button>
+          <button onClick={logoutHandler} style={{ marginLeft: 20 }}>
+            Logout
+          </button>
         </div>
       </div>
     </div>

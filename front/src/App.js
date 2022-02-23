@@ -72,7 +72,7 @@ function App() {
         <TabPane tab="Login" key="1">
           <Login />
         </TabPane>
-        <TabPane tab="Regiseter" key="2">
+        <TabPane tab="Register" key="2">
           <Register />
         </TabPane>
       </Tabs>

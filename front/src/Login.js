@@ -46,8 +46,17 @@ const Login = () => {
   return (
     <>
       {error && <p>{error}</p>}
-      <form onSubmit={formSubmitHandler} className="auth-form">
-        {/* <FormGroup label="Email" labelFor="email"> */}
+      <form
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          flexWrap: "wrap",
+          width: "200px",
+          padding: "10px 0px",
+          margin: "0 auto",
+        }}
+        onSubmit={formSubmitHandler}
+      >
         <input
           id="email"
           placeholder="Email"
@@ -55,23 +64,22 @@ const Login = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {/* </FormGroup> */}
-        {/* <FormGroup label="Password" labelFor="password"> */}
         <input
           id="password"
           placeholder="Password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          style={{ marginTop: 20 }}
         />
-        {/* </FormGroup> */}
         <button
-          intent="primary"
           disabled={isSubmitting}
           text={`${isSubmitting ? "Signing In" : "Sign In"}`}
-          fill
           type="submit"
-        />
+          style={{ marginTop: "20px", width: 150, marginLeft: 25 }}
+        >
+          Submit
+        </button>
       </form>
     </>
   );
