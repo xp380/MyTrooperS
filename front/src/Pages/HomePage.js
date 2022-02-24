@@ -59,6 +59,11 @@ const Welcome = () => {
     }
     fetchData();
   }, []);
+
+  const addTodo = async (item) => {
+    const { data } = await axios.post("http://localhost:8081/todos", item);
+    setTodoList((oldList) => [...oldList, data]);
+  };
   const logoutHandler = () => {
     fetch(process.env.REACT_APP_API_ENDPOINT + "users/logout", {
       credentials: "include",
@@ -111,7 +116,7 @@ const Welcome = () => {
       <Content className="content">
         <Tabs defaultActiveKey="1">
           <TabPane tab="Todo" key="1">
-            <Todo />
+            <Todo addTodo={addTodo} />
           </TabPane>
           <TabPane tab="List" key="2">
             <List list={todoList} />

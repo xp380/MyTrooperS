@@ -1,15 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Todo.css";
 
-const Todo = () => {
+const Todo = ({ addTodo }) => {
+  const [inputValue, setInputValue] = useState("");
+  const [inputValueDescription, setInputValueDescription] = useState("");
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleInputDescription = (e) => {
+    setInputValueDescription(e.target.value);
+  };
+  const handleFormSubmit = () => {
+    addTodo({
+      title: inputValue,
+      description: inputValueDescription,
+      completed: false,
+    });
+  };
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Page de Formulaire</h1>
-      <form className="formulaire">
-        <input type="text" style={{ width: 200, marginLeft: 700 }}></input>
-        <br />
+      <form className="formulaire" onSubmit={handleFormSubmit}>
         <input
           type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+          placeholder="Enter your title"
+          style={{ width: 200, marginLeft: 700 }}
+        ></input>
+        <br />
+        <input
+          value={inputValueDescription}
+          onChange={handleInputDescription}
+          type="text"
+          placeholder="Enter your description"
           style={{ width: 200, marginLeft: 700, marginTop: 20 }}
         ></input>{" "}
         <br />
