@@ -1,9 +1,10 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import List from "./List/index";
 import Search from "./Search/index";
 import Todo from "./Todo/index";
 import { UserContext } from "../Context/UserContext";
 import "./HomePage.css";
+import axios from "axios";
 import { Layout, Tabs } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 
@@ -11,6 +12,7 @@ const { TabPane } = Tabs;
 const { Header, Content } = Layout;
 
 const Welcome = () => {
+  const [todoList, setTodoList] = useState([]);
   const [userContext, setUserContext] = useContext(UserContext);
 
   const fetchUserDetails = useCallback(() => {
@@ -50,6 +52,13 @@ const Welcome = () => {
     }
   }, [userContext.details, fetchUserDetails]);
 
+  useEffect(() => {
+    async function fetchData() {
+      const { data } = await axios.get("http://localhost:8081/todos");
+      setTodoList(data);
+    }
+    fetchData();
+  }, []);
   const logoutHandler = () => {
     fetch(process.env.REACT_APP_API_ENDPOINT + "users/logout", {
       credentials: "include",
@@ -105,7 +114,7 @@ const Welcome = () => {
             <Todo />
           </TabPane>
           <TabPane tab="List" key="2">
-            <List />
+            <List list={todoList} />
           </TabPane>
           <TabPane tab="Search" key="3">
             <Search />
