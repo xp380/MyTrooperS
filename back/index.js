@@ -19,6 +19,7 @@ const todoRoutes = require("./routes/todoRoutes");
 
 const app = express();
 
+// app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
@@ -46,7 +47,7 @@ app.use(passport.initialize());
 
 app.use("/users", userRouter);
 
-app.use("/todo", todoRoutes);
+app.use("/todos", todoRoutes);
 
 app.get("/", function (req, res) {
   res.send({ status: "success" });
