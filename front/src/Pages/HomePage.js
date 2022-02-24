@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useEffect } from "react";
-import List from "../../Pages/List/index";
-import Search from "../../Pages/Search/index";
-import Todo from "../../Pages/Todo/index";
-import { UserContext } from "../../Context/UserContext";
+import List from "./List/index";
+import Search from "./Search/index";
+import Todo from "./Todo/index";
+import { UserContext } from "../Context/UserContext";
 import "./HomePage.css";
 import { Layout, Tabs } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
@@ -49,14 +49,6 @@ const Welcome = () => {
       fetchUserDetails();
     }
   }, [userContext.details, fetchUserDetails]);
-
-  const refetchHandler = () => {
-    // set details to undefined so that spinner will be displayed and
-    // fetchUserDetails will be invoked from useEffect
-    setUserContext((oldValues) => {
-      return { ...oldValues, details: undefined };
-    });
-  };
 
   const logoutHandler = () => {
     fetch(process.env.REACT_APP_API_ENDPOINT + "users/logout", {

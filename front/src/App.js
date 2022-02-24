@@ -3,7 +3,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { UserContext } from "./Context/UserContext";
 import Login from "./Login";
 import Register from "./Register";
-import HomePage from "./Components/HomePage/index";
+import HomePage from "./Pages/HomePage";
 
 function App() {
   const { TabPane } = Tabs;
