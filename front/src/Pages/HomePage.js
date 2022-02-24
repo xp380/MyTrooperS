@@ -101,14 +101,14 @@ const Welcome = () => {
       </Header>
       <Content className="content">
         <Tabs defaultActiveKey="1">
-          <TabPane tab="List" key="1">
+          <TabPane tab="Todo" key="1">
+            <Todo />
+          </TabPane>
+          <TabPane tab="List" key="2">
             <List />
           </TabPane>
-          <TabPane tab="Search" key="2">
+          <TabPane tab="Search" key="3">
             <Search />
-          </TabPane>
-          <TabPane tab="Todo" key="3">
-            <Todo />
           </TabPane>
         </Tabs>
       </Content>
