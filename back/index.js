@@ -15,6 +15,7 @@ require("./strategies/LocalStrategy");
 require("./authenticate");
 
 const userRouter = require("./routes/userRoutes");
+const todoRoutes = require("./routes/todoRoutes");
 
 const app = express();
 
@@ -44,6 +45,8 @@ app.use(cors(corsOptions));
 app.use(passport.initialize());
 
 app.use("/users", userRouter);
+
+app.use("/todo", todoRoutes);
 
 app.get("/", function (req, res) {
   res.send({ status: "success" });
