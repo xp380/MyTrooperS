@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import List from "./List/index";
 import Search from "./Search/index";
-import Todo from "./Todo/index";
+import Todo from "./Form/index";
 import { UserContext } from "../Context/UserContext";
 import "./HomePage.css";
 import axios from "axios";

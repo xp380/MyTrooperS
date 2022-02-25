@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./Todo.css";
+import "./Form.css";
 
-const Todo = ({ addTodo }) => {
+const Form = ({ addTodo }) => {
   const [inputValue, setInputValue] = useState("");
   const [inputValueDescription, setInputValueDescription] = useState("");
 
@@ -45,4 +45,4 @@ const Todo = ({ addTodo }) => {
   );
 };
 
-export default Todo;
+export default Form;
