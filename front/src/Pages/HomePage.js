@@ -64,6 +64,11 @@ const Welcome = () => {
     const { data } = await axios.post("http://localhost:8081/todos", item);
     setTodoList((oldList) => [...oldList, data]);
   };
+
+  const removeTodo = async (id) => {
+    await axios.delete(`http://localhost:8081/todos/${id}`);
+    setTodoList((oldList) => oldList.filter((item) => item._id !== id));
+  };
   const logoutHandler = () => {
     fetch(process.env.REACT_APP_API_ENDPOINT + "users/logout", {
       credentials: "include",
@@ -119,7 +124,7 @@ const Welcome = () => {
             <Todo addTodo={addTodo} />
           </TabPane>
           <TabPane tab="List" key="2">
-            <List list={todoList} />
+            <List removeTodoListProp={removeTodo} list={todoList} />
           </TabPane>
           <TabPane tab="Search" key="3">
             <Search />

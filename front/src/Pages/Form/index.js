@@ -12,12 +12,16 @@ const Form = ({ addTodo }) => {
   const handleInputDescription = (e) => {
     setInputValueDescription(e.target.value);
   };
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    if (inputValue.trim() === "") return;
     addTodo({
       title: inputValue,
       description: inputValueDescription,
       completed: false,
     });
+    setInputValue("");
   };
   return (
     <div>
