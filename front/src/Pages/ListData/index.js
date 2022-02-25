@@ -1,8 +1,8 @@
 import React from "react";
 import Todo from "./Todo";
-import "./List.css";
+import "./ListData.css";
 
-const List = (props) => {
+const ListData = (props) => {
   const todoList = props;
   console.log("dataList", props.removeTodoListProp);
   const renderedList = todoList.list.map((item) => (
@@ -24,4 +24,4 @@ const List = (props) => {
   );
 };
 
-export default List;
+export default ListData;

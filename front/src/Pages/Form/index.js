@@ -16,12 +16,14 @@ const Form = ({ addTodo }) => {
     e.preventDefault();
 
     if (inputValue.trim() === "") return;
+    if (inputValueDescription.trim() === "") return;
     addTodo({
       title: inputValue,
       description: inputValueDescription,
       completed: false,
     });
     setInputValue("");
+    setInputValueDescription("");
   };
   return (
     <div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Card } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
 const Todo = ({ title, description, removeTodoItemProp, editTodoItemProp }) => {
@@ -36,13 +37,19 @@ const Todo = ({ title, description, removeTodoItemProp, editTodoItemProp }) => {
           value={tempValue}
         />
       ) : (
-        <>
-          <div>{value}</div> <br />
-          <div>{description}</div>
-          <div onClick={removeTodoItemProp}>
-            <DeleteOutlined />
-          </div>
-        </>
+        <div style={{ display: "block", width: "100%" }}>
+          <Card
+            title={value}
+            extra={
+              <div onClick={removeTodoItemProp}>
+                <DeleteOutlined />
+              </div>
+            }
+            style={{ width: 300, marginLeft: 100, float: "left", margin: 10 }}
+          >
+            <p>{description}</p>
+          </Card>
+        </div>
       )}
     </div>
   );

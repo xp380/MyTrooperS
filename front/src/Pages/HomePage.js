@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import List from "./List/index";
+import ListData from "./ListData/index";
 import Search from "./Search/index";
 import Todo from "./Form/index";
 import { UserContext } from "../Context/UserContext";
@@ -71,7 +71,7 @@ const Welcome = () => {
   };
 
   const editTodo = async (id, item) => {
-    const { data } = await axios.put(`http://localhost:8081/todos/${id}`, item);
+    await axios.put(`http://localhost:8081/todos/${id}`, item);
   };
   const logoutHandler = () => {
     fetch(process.env.REACT_APP_API_ENDPOINT + "users/logout", {
@@ -128,7 +128,7 @@ const Welcome = () => {
             <Todo addTodo={addTodo} />
           </TabPane>
           <TabPane tab="List" key="2">
-            <List
+            <ListData
               editTodoListProp={editTodo}
               removeTodoListProp={removeTodo}
               list={todoList}

@@ -27,7 +27,6 @@ const Search = () => {
       setAPIData(response.data);
     });
   }, []);
-  console.log(APIData);
 
   return (
     <div style={{ marginTop: 20 }}>
