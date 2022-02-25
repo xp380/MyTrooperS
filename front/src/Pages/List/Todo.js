@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { DeleteOutlined, CheckOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 
-const Todo = ({ title, description, removeTodoItemProp }) => {
+const Todo = ({ title, description, removeTodoItemProp, editTodoItemProp }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(title);
   const [tempValue, setTempValue] = useState(title);
@@ -14,6 +14,7 @@ const Todo = ({ title, description, removeTodoItemProp }) => {
     const key = e.keyCode;
 
     if (key === 13) {
+      editTodoItemProp({ title: tempValue });
       setValue(tempValue);
       setIsEditing(false);
     } else if (key === 27) {

@@ -16,15 +16,11 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  Todo.findOneAndUpdate(
-    { _id: req.params.id },
-    res.body,
-    { new: true },
-    (err, result) => {
-      if (err) throw new Error(err);
-      res.json(result);
-    }
-  );
+  Todo.findOneAndUpdate({ _id: req.params.id }, req.body, (err, result) => {
+    if (err) throw new Error(err);
+    // console.log(result);
+    res.json(result);
+  });
 });
 
 router.delete("/:id", (req, res) => {

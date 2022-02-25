@@ -9,6 +9,9 @@ const List = (props) => {
     <Todo
       title={item.title}
       removeTodoItemProp={(e) => props.removeTodoListProp(item._id)}
+      editTodoItemProp={(updatedItem) =>
+        props.editTodoListProp(item._id, updatedItem)
+      }
       key={item.title}
       description={item.description}
     />
