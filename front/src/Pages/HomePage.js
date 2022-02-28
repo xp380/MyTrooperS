@@ -59,7 +59,7 @@ const Welcome = () => {
     }
     fetchData();
   }, []);
-
+  console.log("list", todoList);
   const addTodo = async (item) => {
     const { data } = await axios.post("http://localhost:8081/todos", item);
     setTodoList((oldList) => [...oldList, data]);

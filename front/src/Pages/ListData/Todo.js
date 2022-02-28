@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { Card } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
-const Todo = ({ title, description, removeTodoItemProp, editTodoItemProp }) => {
+const Todo = ({
+  title,
+  description,
+  statut,
+  removeTodoItemProp,
+  editTodoItemProp,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(title);
   const [tempValue, setTempValue] = useState(title);
@@ -10,7 +16,6 @@ const Todo = ({ title, description, removeTodoItemProp, editTodoItemProp }) => {
   const handleDivDoubleClick = () => {
     setIsEditing(true);
   };
-
   const handleInputKeyDown = (e) => {
     const key = e.keyCode;
 
@@ -27,6 +32,7 @@ const Todo = ({ title, description, removeTodoItemProp, editTodoItemProp }) => {
   const handleInputOnChange = (e) => {
     setTempValue(e.target.value);
   };
+
   return (
     <div onDoubleClick={handleDivDoubleClick}>
       {isEditing ? (
@@ -48,6 +54,7 @@ const Todo = ({ title, description, removeTodoItemProp, editTodoItemProp }) => {
             style={{ width: 300, marginLeft: 100, float: "left", margin: 10 }}
           >
             <p>{description}</p>
+            <p style={{ textAlign: "center" }}>{statut}</p>
           </Card>
         </div>
       )}

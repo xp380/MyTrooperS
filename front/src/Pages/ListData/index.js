@@ -14,6 +14,7 @@ const ListData = (props) => {
       }
       key={item.title}
       description={item.description}
+      statut={item.statut}
     />
   ));
   return (
