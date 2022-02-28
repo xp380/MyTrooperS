@@ -12,7 +12,9 @@ const Todo = ({
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(title);
   const [tempValue, setTempValue] = useState(title);
-  console.log("test", removeTodoItemProp);
+
+  const [valueDescription, setValueDescription] = useState(description);
+  const [tempValueDescription, setTempValueDescription] = useState(description);
   const handleDivDoubleClick = () => {
     setIsEditing(true);
   };
@@ -33,15 +35,39 @@ const Todo = ({
     setTempValue(e.target.value);
   };
 
+  const hanfdeInputKeyDownDescription = (e) => {
+    const key = e.keyCode;
+
+    if (key === 13) {
+      editTodoItemProp({ description: tempValueDescription });
+      setValueDescription(tempValueDescription);
+      setIsEditing(false);
+    } else if (key === 27) {
+      setTempValueDescription(valueDescription);
+      setIsEditing(false);
+    }
+  };
+
+  const handleInputDescriptionOnChange = (e) => {
+    setTempValueDescription(e.target.value);
+  };
   return (
     <div onDoubleClick={handleDivDoubleClick}>
       {isEditing ? (
-        <input
-          onChange={handleInputOnChange}
-          onKeyDown={handleInputKeyDown}
-          autoFocus={true}
-          value={tempValue}
-        />
+        <>
+          <input
+            onChange={handleInputOnChange}
+            onKeyDown={handleInputKeyDown}
+            autoFocus={true}
+            value={tempValue}
+          />
+          <input
+            onChange={handleInputDescriptionOnChange}
+            onKeyDown={hanfdeInputKeyDownDescription}
+            autoFocus={true}
+            value={tempValueDescription}
+          />
+        </>
       ) : (
         <div style={{ display: "block", width: "100%" }}>
           <Card
