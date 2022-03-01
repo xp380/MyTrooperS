@@ -15,3 +15,6 @@ const UserProvider = (props) => {
 };
 
 export { UserContext, UserProvider };
+
+// La création de contexte va réceptionner le state du user connecté ou inscrit à sa session.
+// Durant l'essaie du test, l'user contexte va maintenir sa session active pendant 15 mn

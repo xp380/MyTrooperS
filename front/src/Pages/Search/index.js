@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Card } from "antd";
 import "./Search.css";
 
 const Search = () => {
@@ -29,27 +30,44 @@ const Search = () => {
   }, []);
 
   return (
-    <div className="inputSearch ">
+    <div>
       <input
         icon="search"
         placeholder="Search..."
         onChange={(e) => searchItems(e.target.value)}
+        className="inputSearch"
       />
       {searchInput.length > 1
         ? filteredResults.map((item) => {
             return (
               <div>
-                <h1>{item.title}</h1>
-                <p>{item.description}</p>
+                <Card
+                  title={item.title}
+                  style={{
+                    width: 300,
+                    marginLeft: 100,
+                    marginTop: 100,
+                  }}
+                >
+                  <p>{item.description}</p>
+                  <p style={{ textAlign: "center" }}>{item.statut}</p>
+                </Card>
               </div>
             );
           })
         : APIData.map((item) => {
             return (
-              <div>
-                <h1>{item.title}</h1>
+              <Card
+                title={item.title}
+                style={{
+                  width: 300,
+                  marginLeft: 100,
+                  marginTop: 100,
+                }}
+              >
                 <p>{item.description}</p>
-              </div>
+                <p style={{ textAlign: "center" }}>{item.statut}</p>
+              </Card>
             );
           })}
     </div>

@@ -17,8 +17,8 @@ function App() {
     }).then(async (response) => {
       if (response.ok) {
         const data = await response.json();
-        setUserContext((oldValues) => {
-          return { ...oldValues, token: data.token };
+        setUserContext((test) => {
+          return { ...test, token: data.token };
         });
       } else {
         setUserContext((oldValues) => {
@@ -29,6 +29,24 @@ function App() {
       setTimeout(verifyUser, 10 * 60 * 1000);
     });
   }, [setUserContext]);
+
+  // const verifyUser = useCallback(() => {
+  //   axios
+  //     .post(process.env.REACT_APP_API_ENDPOINT + "users/refreshToken")
+  //     .then(async (response) => {
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setUserContext((test) => {
+  //           return { ...test, token: data.token };
+  //         });
+  //       } else {
+  //         setUserContext((oldValues) => {
+  //           return { ...oldValues, token: null };
+  //         });
+  //       }
+  //       setTimeout(verifyUser, 10 * 60 * 1000);
+  //     });
+  // }, [setUserContext]
 
   useEffect(() => {
     verifyUser();
