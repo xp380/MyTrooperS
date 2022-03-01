@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+// Pour définir les models, on va d'abord construire un nouveau Schéma qui contient les documents
 const passportLocalMongoose = require("passport-local-mongoose");
 
 const Session = new Schema({
@@ -19,14 +19,6 @@ const User = new Schema({
     type: String,
     default: "",
   },
-  authStrategy: {
-    type: String,
-    default: "local",
-  },
-  points: {
-    type: Number,
-    default: 50,
-  },
   refreshToken: {
     type: [Session],
   },
@@ -39,6 +31,7 @@ User.set("toJSON", {
     return ret;
   },
 });
-
+// set enlève tous les documents dont les conditions sont remplies
+// Ici on enlève RefreshToke de la réponse
 User.plugin(passportLocalMongoose);
 module.exports = mongoose.model("User", User);

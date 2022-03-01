@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
+import "./Todo.css";
 
 const Todo = ({
   title,
@@ -69,7 +70,7 @@ const Todo = ({
           />
         </>
       ) : (
-        <div style={{ display: "block", width: "100%" }}>
+        <div className="CardList">
           <Card
             title={value}
             extra={

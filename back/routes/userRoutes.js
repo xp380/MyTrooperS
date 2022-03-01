@@ -48,10 +48,12 @@ router.post("/signup", (req, res, next) => {
   }
 });
 
+// Cette route permet de te connecter à ta session
 router.post("/login", passport.authenticate("local"), (req, res, next) => {
   const token = getToken({ _id: req.user._id });
   const refreshToken = getRefreshToken({ _id: req.user._id });
   User.findById(req.user._id).then(
+    // Trouver l'user par son id
     (user) => {
       user.refreshToken.push({ refreshToken });
       user.save((err, user) => {
@@ -122,10 +124,11 @@ router.post("/refreshToken", (req, res, next) => {
   }
 });
 
+// Pour vérifier l'user connecté
 router.get("/me", verifyUser, (req, res, next) => {
   res.send(req.user);
 });
-
+// Pour se déconnecter
 router.get("/logout", verifyUser, (req, res, next) => {
   const { signedCookies = {} } = req;
   const { refreshToken } = signedCookies;

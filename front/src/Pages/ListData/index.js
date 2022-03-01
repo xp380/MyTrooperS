@@ -19,7 +19,7 @@ const ListData = (props) => {
   ));
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Ma Liste</h1>
+      <h1 className="titleListData">Ma Liste</h1>
       {renderedList}
     </div>
   );

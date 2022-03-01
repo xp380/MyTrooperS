@@ -107,17 +107,8 @@ const Welcome = () => {
           MyTrooperS
           <br />
         </h3>
-        <div style={{ paddingBottom: "20px" }}>
-          <button
-            onClick={logoutHandler}
-            style={{
-              marginLeft: 600,
-              marginTop: 20,
-              height: 60,
-              width: 60,
-              borderRadius: 12,
-            }}
-          >
+        <div className="buttonHomepageOverview">
+          <button onClick={logoutHandler} className="buttonHomepage">
             <LogoutOutlined />
           </button>
         </div>

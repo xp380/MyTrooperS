@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "./Context/UserContext";
+import "./Register.css";
 
 const Register = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -54,28 +55,18 @@ const Register = () => {
     <>
       {error && <p>{error}</p>}
 
-      <form
-        onSubmit={formSubmitHandler}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          flexWrap: "wrap",
-          width: "200px",
-          padding: "10px 0px",
-          margin: "0 auto",
-        }}
-      >
+      <form onSubmit={formSubmitHandler} className="formSubmit">
         <input
           id="firstName"
           placeholder="First Name"
           onChange={(e) => setFirstName(e.target.value)}
-          style={{ marginTop: 20 }}
+          className="inputRegister"
         />
         <input
           id="lastName"
           placeholder="Last Name"
           onChange={(e) => setLastName(e.target.value)}
-          style={{ marginTop: 20 }}
+          className="inputRegister"
         />
 
         <input
@@ -83,7 +74,7 @@ const Register = () => {
           type="email"
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
-          style={{ marginTop: 20 }}
+          className="inputRegister"
         />
 
         <input
@@ -91,13 +82,13 @@ const Register = () => {
           placeholder="Password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
-          style={{ marginTop: 20 }}
+          className="inputRegister"
         />
         <button
           disabled={isSubmitting}
           text={`${isSubmitting ? "Registering" : "Register"}`}
           type="submit"
-          style={{ marginTop: 20, width: 150, marginLeft: 25 }}
+          className="buttonRegister"
         >
           Submit
         </button>

@@ -21,7 +21,7 @@ const Form = ({ addTodo }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    if (inputValue.trim() === "") return;
+    if (inputValue.trim() === "") return; // Pour éviter d'envoyer une donnée vide
     if (inputValueDescription.trim() === "") return;
     addTodo({
       title: inputValue,
@@ -35,14 +35,14 @@ const Form = ({ addTodo }) => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Page de Formulaire</h1>
-      <form className="formulaire" onSubmit={handleFormSubmit}>
+      <h1 className="formTitle">Page de Formulaire</h1>
+      <form onSubmit={handleFormSubmit}>
         <input
           type="text"
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Enter your title"
-          style={{ width: 200, marginLeft: 700 }}
+          className="formInput"
         />
         <br />
         <input
@@ -50,11 +50,11 @@ const Form = ({ addTodo }) => {
           onChange={handleInputDescription}
           type="text"
           placeholder="Enter your description"
-          style={{ width: 200, marginLeft: 700, marginTop: 20 }}
+          className="formInput2"
         />
         <br />
         <select
-          style={{ width: 200, marginLeft: 700, marginTop: 20 }}
+          className="formInput2"
           value={inputValueStatut}
           onChange={(e) => handleInputStatut(e)}
           type="select"

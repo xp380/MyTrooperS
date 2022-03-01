@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "./Context/UserContext";
+import "./Login.css";
 
 const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,17 +47,7 @@ const Login = () => {
   return (
     <>
       {error && <p>{error}</p>}
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          flexWrap: "wrap",
-          width: "200px",
-          padding: "10px 0px",
-          margin: "0 auto",
-        }}
-        onSubmit={formSubmitHandler}
-      >
+      <form className="formLogin" onSubmit={formSubmitHandler}>
         <input
           id="email"
           placeholder="Email"
@@ -65,18 +56,17 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          id="password"
           placeholder="Password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{ marginTop: 20 }}
+          className="formLogin2"
         />
         <button
           disabled={isSubmitting}
           text={`${isSubmitting ? "Signing In" : "Sign In"}`}
           type="submit"
-          style={{ marginTop: "20px", width: 150, marginLeft: 25 }}
+          className="buttonLogin"
         >
           Submit
         </button>

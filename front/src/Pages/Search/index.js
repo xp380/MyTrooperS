@@ -29,7 +29,7 @@ const Search = () => {
   }, []);
 
   return (
-    <div style={{ marginTop: 20 }}>
+    <div className="inputSearch ">
       <input
         icon="search"
         placeholder="Search..."

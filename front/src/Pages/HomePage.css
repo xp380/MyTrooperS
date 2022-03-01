@@ -24,3 +24,15 @@
 .content {
   margin-top: 63px;
 }
+
+.buttonHomepageOverview {
+  padding-bottom: 20px;
+}
+
+.buttonHomepage {
+  margin-left: 600px;
+  margin-top: 20px;
+  height: 60px;
+  width: 60px;
+  border-radius: 12px;
+}

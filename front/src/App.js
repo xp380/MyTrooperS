@@ -1,5 +1,5 @@
 import { Tabs } from "antd";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { UserContext } from "./Context/UserContext";
 import Login from "./Login";
 import Register from "./Register";
@@ -7,8 +7,6 @@ import HomePage from "./Pages/HomePage";
 
 function App() {
   const { TabPane } = Tabs;
-
-  const [currentTab, setCurrentTab] = useState("login");
   const [userContext, setUserContext] = useContext(UserContext);
 
   const verifyUser = useCallback(() => {
@@ -28,7 +26,7 @@ function App() {
         });
       }
       // call refreshToken every 5 minutes to renew the authentication token.
-      setTimeout(verifyUser, 5 * 60 * 1000);
+      setTimeout(verifyUser, 10 * 60 * 1000);
     });
   }, [setUserContext]);
 
@@ -36,9 +34,10 @@ function App() {
     verifyUser();
   }, [verifyUser]);
 
+  // Pour ce useEffect, la fonction verifyUser s'affiche seulement lorsque le composant se met à jour
   return userContext.token === null ? (
     <div>
-      <Tabs id="Tabs" onChange={setCurrentTab} selectedTabId={currentTab}>
+      <Tabs>
         <TabPane tab="Login" key="1">
           <Login />
         </TabPane>
