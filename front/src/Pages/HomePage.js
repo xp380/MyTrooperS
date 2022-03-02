@@ -14,7 +14,7 @@ const { Header, Content } = Layout;
 const Welcome = () => {
   const [todoList, setTodoList] = useState([]);
   const [userContext, setUserContext] = useContext(UserContext);
-
+  // Le useCallback va éviter de re déclarer au momemnt du renvoi du composant
   const fetchUserDetails = useCallback(() => {
     fetch(process.env.REACT_APP_API_ENDPOINT + "users/me", {
       method: "GET",
@@ -34,7 +34,6 @@ const Welcome = () => {
         if (response.status === 401) {
           // Edge case: when the token has expired.
           // This could happen if the refreshToken calls have failed due to network error or
-          // User has had the tab open from previous day and tries to click on the Fetch button
           window.location.reload();
         } else {
           setUserContext((oldValues) => {

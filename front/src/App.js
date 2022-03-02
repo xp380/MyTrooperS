@@ -25,7 +25,7 @@ function App() {
           return { ...oldValues, token: null };
         });
       }
-      // call refreshToken every 5 minutes to renew the authentication token.
+      // call refreshToken every 10 minutes to renew the authentication token.
       setTimeout(verifyUser, 10 * 60 * 1000);
     });
   }, [setUserContext]);

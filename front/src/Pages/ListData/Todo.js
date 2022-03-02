@@ -105,9 +105,16 @@ const Todo = ({
                 <DeleteOutlined />
               </div>
             }
-            style={{ width: 300, marginLeft: 100, float: "left", margin: 10 }}
+            style={{
+              width: 300,
+              marginLeft: 100,
+              float: "left",
+              margin: 10,
+            }}
           >
-            <p>{description}</p>
+            <p style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
+              {description}
+            </p>
 
             <p style={{ textAlign: "center" }}>
               {statut !== "Terminé" ? (

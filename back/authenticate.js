@@ -16,12 +16,13 @@ exports.getToken = (user) => {
     expiresIn: eval(process.env.SESSION_EXPIRY),
   });
 };
-
+// Pour créér le token
 exports.getRefreshToken = (user) => {
   const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: eval(process.env.REFRESH_TOKEN_EXPIRY),
   });
   return refreshToken;
 };
-
+// Pour créé le token rafraichi
 exports.verifyUser = passport.authenticate("jwt", { session: false });
+// middleware qui sera appelé pour chaque requête authentifié

@@ -156,3 +156,6 @@ router.get("/logout", verifyUser, (req, res, next) => {
   );
 });
 module.exports = router;
+
+// Quand l'utilisateur a réussi de s'inscrire, on génère un JWT et le jeton de rafraichissement. On sauveagrde les identifiants de l'user dans le jeton refresh.
+//

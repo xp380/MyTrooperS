@@ -11,6 +11,7 @@ const Search = () => {
   const searchItems = (searchValue) => {
     setSearchInput(searchValue);
     if (searchInput !== "") {
+      // Si ce n'est pas vide, alors on va prendre 1 donnée filtrée
       const filteredData = APIData.filter((item) => {
         return Object.values(item)
           .join("")
