@@ -16,6 +16,10 @@ const Todo = ({
 
   const [valueDescription, setValueDescription] = useState(description);
   const [tempValueDescription, setTempValueDescription] = useState(description);
+
+  const [valueStatut, setValueStatut] = useState(statut);
+  const [tempValueStatut, setTempValueStatut] = useState(statut);
+
   const handleDivDoubleClick = () => {
     setIsEditing(true);
   };
@@ -36,7 +40,7 @@ const Todo = ({
     setTempValue(e.target.value);
   };
 
-  const hanfdeInputKeyDownDescription = (e) => {
+  const handleInputKeyDownDescription = (e) => {
     const key = e.keyCode;
 
     if (key === 13) {
@@ -52,6 +56,23 @@ const Todo = ({
   const handleInputDescriptionOnChange = (e) => {
     setTempValueDescription(e.target.value);
   };
+
+  const handleInputKeyDownStatut = (e) => {
+    const key = e.keyCode;
+
+    if (key === 13) {
+      editTodoItemProp({ statut: tempValueStatut });
+      setValueStatut(tempValueStatut);
+      setIsEditing(false);
+    } else if (key === 27) {
+      setTempValueStatut(valueStatut);
+      setIsEditing(false);
+    }
+  };
+
+  const handleInputStatutOnChange = (e) => {
+    setTempValueStatut(e.target.value);
+  };
   return (
     <div onDoubleClick={handleDivDoubleClick}>
       {isEditing ? (
@@ -64,9 +85,15 @@ const Todo = ({
           />
           <input
             onChange={handleInputDescriptionOnChange}
-            onKeyDown={hanfdeInputKeyDownDescription}
+            onKeyDown={handleInputKeyDownDescription}
             autoFocus={true}
             value={tempValueDescription}
+          />
+          <input
+            onChange={handleInputStatutOnChange}
+            onKeyDown={handleInputKeyDownStatut}
+            autoFocus={true}
+            value={tempValueStatut}
           />
         </>
       ) : (
@@ -81,7 +108,14 @@ const Todo = ({
             style={{ width: 300, marginLeft: 100, float: "left", margin: 10 }}
           >
             <p>{description}</p>
-            <p style={{ textAlign: "center" }}>{statut}</p>
+
+            <p style={{ textAlign: "center" }}>
+              {statut !== "Terminé" ? (
+                <p style={{ color: "red" }}>{statut}</p>
+              ) : (
+                <p style={{ color: "green" }}>{statut}</p>
+              )}
+            </p>
           </Card>
         </div>
       )}
