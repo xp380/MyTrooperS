@@ -103,7 +103,7 @@ const Welcome = () => {
           !
         </div>
         <h3 className="title">
-          MyTrooperS
+          TodoApp
           <br />
         </h3>
         <div className="buttonHomepageOverview">
