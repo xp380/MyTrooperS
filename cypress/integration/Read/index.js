@@ -6,7 +6,7 @@ describe("Scénario sur la lecture du ticket", () => {
     // Saisir les données personnelles
     cy.get('[id="email"]').click().type("vincentkouoi@free.fr");
 
-    cy.get('[id="password"]').click().type("vincent");
+    cy.get('[type="password"]').click().type("vincent");
 
     cy.contains("Submit").click({ force: true });
     cy.wait(1000);
