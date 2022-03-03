@@ -11,3 +11,9 @@ Pour lancer le projet en local:
 - yarn ou npm install depuis le dossier Front
 
 - yarn start
+
+3) Cypress:
+
+- yarn 
+
+- yarn run cypress open
